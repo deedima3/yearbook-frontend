@@ -25,6 +25,10 @@ module.exports = {
       },
       boxShadow : {
         'button-shadow' : "5px 5px 0px 0px #000000",
+      },
+      strokeWidth : {
+        'md' : "3px",
+        'lg' : "8px",
       }
     },
   },
