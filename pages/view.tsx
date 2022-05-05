@@ -5,6 +5,9 @@ import TextInput from '../components/Form/TextInput'
 import NormalPageLayout from '../components/Layout/NormalPageLayout'
 import BirthdayTitle from '../components/Title/BirthdayTitle'
 import CustomTitle from '../components/Title/CustomTitle'
+import HeaderCard from '../components/Card/HeaderCard'
+import ProfileCard from '../components/Card/ProfileCard'
+import NormalPageLayout from '../components/Layout/NormalPageLayout'
 
 const View = () => {
   return (

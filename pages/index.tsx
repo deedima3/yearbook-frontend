@@ -1,14 +1,27 @@
-import type { NextPage } from 'next'
-import ProfileCard from '../components/Card/ProfileCard'
-import NormalPageLayout from '../components/Layout/NormalPageLayout'
-import Navbar from '../components/Navbar/Navbar'
+import type { NextPage } from "next";
+import ProfileCard from "../components/Card/ProfileCard";
+import TwitsCard from "../components/Card/TwitsCard";
+import NormalPageLayout from "../components/Layout/NormalPageLayout";
+import Navbar from "../components/Navbar/Navbar";
+import Title from "../components/SEO/Title";
 
 const Home: NextPage = () => {
   return (
-    <NormalPageLayout>
-      <ProfileCard imageLink={'https://images.unsplash.com/photo-1525957067591-2e017b3e881d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80'} name={'Yulia Damayanti'} description={'Idk maybe but no'}/>
-    </NormalPageLayout>
-  )
-}
+    <>
+    <Title pageTitle="Home" description={"Remmember the great times"}/>
+      <NormalPageLayout>
+        <TwitsCard
+          title={"Susan Hit a Switch"}
+          postedOn={"28 Desember 2002"}
+          description={"An invisible connection system; a mystical portal between Illustrator and After Effects.Transfer shapes as you need them without importing, converting or redrawing. The vector workflow you imagined between apps created by the same company..."}
+          upvoted={false}
+          downvoted={false}
+          upvoteCount={55}
+          downvoteCount={100}
+        />
+      </NormalPageLayout>
+    </>
+  );
+};
 
-export default Home
+export default Home;
