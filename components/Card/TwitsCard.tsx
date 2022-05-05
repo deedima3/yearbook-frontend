@@ -30,8 +30,8 @@ const TwitsCard = ({
     <div className="flex border-2 border-black bg-white py-10 px-10 max-w-screen-lg justify-between gap-4">
       <div className="flex flex-col max-w-screen-md">
         <div className="text-3xl font-bold">{title}</div>
-        <div className="text-md">{`Posted On : ${postedOn}`}</div>
-        <div className="text-lg">{truncatedDescription}</div>
+        <div className="text-md font-semibold text-gray-500">{`Posted On : ${postedOn}`}</div>
+        <div className="text-lg mt-3">{truncatedDescription}</div>
       </div>
       <div className="flex flex-col gap-10">
         <div className="flex gap-4 items-center">
