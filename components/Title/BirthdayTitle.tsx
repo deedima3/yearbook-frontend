@@ -1,6 +1,7 @@
 import React from "react";
 import CustomTitle from "./CustomTitle";
 
+
 const BirthdayTitle = () => {
     return (
         <div className='flex flex-col text-center'>
