@@ -29,6 +29,19 @@ module.exports = {
       strokeWidth : {
         'md' : "3px",
         'lg' : "8px",
+      },
+      keyframes : {
+        floating : {
+          '0% , 100%' : {
+            transform: 'translatey(0px)'
+          },
+          '50%' : {
+            transform: 'translatey(-20px)'
+          },
+        }
+      },
+      animation : {
+        floating : 'floating 4s ease-in-out infinite'
       }
     },
   },

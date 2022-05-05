@@ -14,7 +14,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex justify-between font-IBM items-center gap-10 text-white text-2xl">
-          <NavbarLink text="SEARCH" href="/search" />
+          <NavbarLink text="SEARCH" href="/people" />
           <NavbarLink text="HOME" href="/" />
           <NavbarLink text="BIRTHDAY" href="/birthday" />
         </div>
