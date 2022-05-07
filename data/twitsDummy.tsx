@@ -1,4 +1,4 @@
-import { Twits } from "../interfaces/twitsInterfaces" 
+import { Twits } from "../interfaces/twitsInterfaces"
 
 export const twitsData : Twits[] = [
     {

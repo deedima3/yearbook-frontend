@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import HeaderCard from "../components/Card/HeaderCard";
-import TwitsCard from "../components/Card/TwitsCard";
-import NormalPageLayout from "../components/Layout/NormalPageLayout";
-import Title from "../components/SEO/Title";
-import { twitsData } from "./data/twitsDummy";
-import CustomLinkButton from "../components/Button/CustomLinkButton";
+import HeaderCard from "../../components/Card/HeaderCard";
+import TwitsCard from "../../components/Card/TwitsCard";
+import NormalPageLayout from "../../components/Layout/NormalPageLayout";
+import Title from "../../components/SEO/Title";
+import { twitsData } from "../../data/twitsDummy";
+import CustomLinkButton from "../../components/Button/CustomLinkButton";
 
 const PersonDetail = () => {
 
