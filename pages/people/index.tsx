@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import ProfileCard from "../components/Card/ProfileCard";
-import PasswordInput from "../components/Form/PasswordInput";
-import SearchBar from "../components/Form/SearchBar";
-import NormalPageLayout from "../components/Layout/NormalPageLayout";
-import Title from "../components/SEO/Title";
-import { profileData } from "../data/dummyProfile";
+import ProfileCard from "../../components/Card/ProfileCard";
+import PasswordInput from "../../components/Form/PasswordInput";
+import SearchBar from "../../components/Form/SearchBar";
+import NormalPageLayout from "../../components/Layout/NormalPageLayout";
+import Title from "../../components/SEO/Title";
+import { profileData } from "../../data/dummyProfile";
 
 const People = () => {
 
