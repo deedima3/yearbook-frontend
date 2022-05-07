@@ -9,7 +9,7 @@ interface Props {
 const HeaderCard = ({ imageLink, name, description }: Props) => {
   return (
     <div className="border-black border-2 flex max-w-screen-lg shadow">
-      <div className="w-[300px] h-[300px]">
+      <div className="w-[300px] h-[280px]">
         <img src={imageLink} alt={name} className="object-none w-full h-full"/>
       </div>
       <div className="flex flex-col bg-white w-full py-8 px-5 gap-4">
