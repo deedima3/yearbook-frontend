@@ -13,11 +13,11 @@ interface Props {
 const CustomLinkButton = ({children, type, extraClasses, onClick, href} : Props) => {
   return (
     <Link href={href}>
-        <a>
+      <a>
         <CustomButton onClick={onClick} type={type} extraClasses={extraClasses}>
             {children}
         </CustomButton>
-        </a>
+      </a>
     </Link>
   )
 }
