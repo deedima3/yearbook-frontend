@@ -1,18 +1,36 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { centerCrop, Crop, makeAspectCrop, PixelCrop } from "react-image-crop";
+import { uploadToImageBB } from "../api/imgBB/imgbb";
+import { canvasPreview } from "../shared/canvasPreview";
 
-interface CropData {
-    aspectRatio : number;
-    handlePushData : () => void;
-}
 
-export function useImageCropper({aspectRatio, handlePushData} : CropData) {
+export function useImageCropper(aspectRatio : number) {
   const [imgSrc, setImgSrc] = useState("");
-  const previewCanvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [crop, setCrop] = useState<Crop>();
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
   const [aspect, setAspect] = useState<number | undefined>(aspectRatio);
+
+  useEffect(() => {
+    console.log("imgSrc", imgSrc)
+    console.log("crop", crop)
+    console.log("completedCrop", completedCrop)
+  }, [imgSrc, crop, completedCrop])
+  
+  function toBlob(canvas: HTMLCanvasElement): any {
+    return new Promise((resolve) => {
+      canvas.toBlob(resolve)
+    })
+  }
+
+  async function getCroppedImgBlob(){
+    const canvas = document.createElement('canvas')
+    canvasPreview(imgRef.current!, canvas, completedCrop!)
+
+    const blob = await toBlob(canvas)
+    return blob
+  }
+  
 
   function centerAspectCrop(
     mediaWidth: number,
@@ -52,5 +70,10 @@ export function useImageCropper({aspectRatio, handlePushData} : CropData) {
     }
   }
 
-  return {onImageLoad, onSelectFile, crop, setCrop, completedCrop, imgSrc, imgRef}
+  async function uploadImage(){
+    let link = await uploadToImageBB(await getCroppedImgBlob())
+    return link
+  }
+
+  return {onImageLoad, onSelectFile, crop, setCrop, completedCrop, imgSrc, imgRef, uploadImage, setCompletedCrop}
 }
