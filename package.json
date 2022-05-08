@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.5",
+    "framer-motion": "^6.3.3",
     "next": "12.1.5",
     "postcss": "^8.4.12",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-hook-form": "^7.30.0",
+    "react-image-crop": "^10.0.0",
     "zustand": "^4.0.0-rc.0"
   },
   "devDependencies": {
