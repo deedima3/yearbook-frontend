@@ -34,9 +34,9 @@ const PictureCropModal = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="flex flex-col items-center border-2 border-black bg-white w-full max-w-screen-md px-16 py-2">
+    <div className="flex flex-col items-center border-2 border-black bg-white w-full max-w-screen-md px-16 py-5 relative">
       <div
-        className="w-full flex justify-end cursor-pointer"
+        className="w-full flex justify-end cursor-pointer absolute top-0 right-3"
         onClick={closeModal}
       >
         X
@@ -63,7 +63,7 @@ const PictureCropModal = ({
               : "Insert your image!"
           }
           extraClasses="text-lg"
-          outlineWidth={4}
+          outlineWidth={0}
         />
       </div>
       <div className="mt-10">

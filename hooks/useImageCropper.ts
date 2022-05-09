@@ -10,12 +10,6 @@ export function useImageCropper(aspectRatio : number) {
   const [crop, setCrop] = useState<Crop>();
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
   const [aspect, setAspect] = useState<number | undefined>(aspectRatio);
-
-  useEffect(() => {
-    console.log("imgSrc", imgSrc)
-    console.log("crop", crop)
-    console.log("completedCrop", completedCrop)
-  }, [imgSrc, crop, completedCrop])
   
   function toBlob(canvas: HTMLCanvasElement): any {
     return new Promise((resolve) => {

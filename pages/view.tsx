@@ -28,10 +28,6 @@ const View = () => {
   const [show, setShow, handleClose, handleOpen] = useModal();
   const [imageLink, setCroppedImageLink] = useState("");
 
-  useEffect(() => {
-    console.log(show)
-  }, [show])
-
   return (
     <NormalPageLayout>
       <CustomButton onClick={() => {handleOpen()}}>
