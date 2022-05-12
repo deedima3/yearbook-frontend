@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="flex justify-between max-w-screen-2xl w-full py-5 px-5 mx-5">
         <div className="cursor-pointer w-30">
           <Link href={"/"}>
-            <img src="Logo.png" alt="Brand Logo" />
+            <img src="/Logo.png" alt="Brand Logo" />
           </Link>
         </div>
         <div className="flex justify-between font-IBM items-center gap-10 text-white text-2xl">

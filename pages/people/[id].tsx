@@ -10,7 +10,7 @@ const PersonDetail = () => {
 
   return (
     <NormalPageLayout>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-16">
         <div className="flex flex-col justify-center">
            <HeaderCard 
                imageLink={'/Modal.png'} 
