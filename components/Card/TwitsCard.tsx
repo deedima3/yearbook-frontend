@@ -36,28 +36,28 @@ const TwitsCard = ({
       <div className="flex flex-col gap-10">
         <div className="flex gap-4 items-center">
           <div
-            className="w-16 h-16 hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
+            className="w-16 h-16 hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 flex items-center"
             onMouseLeave={() => setupHovered(false)}
             onMouseEnter={() => setupHovered(true)}
           >
             {upvoted || upHovered ? (
-              <img src="filledUp.png" alt="FilledUpvote" />
+              <img src="/filledUp.png" alt="FilledUpvote" />
             ) : (
-              <img src="unfilledUp.png" alt="UnFilledUpvote" />
+              <img src="/unfilledUp.png" alt="UnFilledUpvote" />
             )}
           </div>
           <p className="text-2xl font-bold text-brand-green">{upvoteCount}</p>
         </div>
         <div className="flex gap-4 items-center">
           <div
-            className="w-16 h-16 hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
+            className="w-16 h-16 hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 flex items-center"
             onMouseLeave={() => setdownHovered(false)}
             onMouseEnter={() => setdownHovered(true)}
           >
             {downvoted || downHovered ? (
-              <img src="filledDown.png" alt="FilledDownvote" />
+              <img src="/filledDown.png" alt="FilledDownvote" />
             ) : (
-              <img src="unfilledDown.png" alt="UnFilledDownvote" />
+              <img src="/unfilledDown.png" alt="UnFilledDownvote" />
             )}
           </div>
           <p className="text-2xl font-bold text-brand-red">{downvoteCount}</p>
