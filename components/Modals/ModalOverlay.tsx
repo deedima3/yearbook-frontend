@@ -19,5 +19,4 @@ const ModalOverlay = ({ children }: Overlay) => {
     </motion.div>
   );
 };
-
 export default ModalOverlay;

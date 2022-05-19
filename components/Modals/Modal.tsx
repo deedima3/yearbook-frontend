@@ -31,7 +31,7 @@ export default function Modal({ show, onClose, children, title, extraClass}: Mod
   if(_document){
     return ReactDOM.createPortal(
       modalContent,
-      _document.getElementById("portal")!
+      _document.getElementById("modal")!
     );
   }else {
     return null;

@@ -28,7 +28,23 @@ module.exports = {
         'success-shadow' : "8px 8px 0px 0px #10B981",
         'failed-shadow' : "8px 8px 0px 0px #DE3434",
         'warning-shadow' : "8px 8px 0px 0px #eab308",
-
+      },
+      strokeWidth : {
+        'md' : "3px",
+        'lg' : "8px",
+      },
+      keyframes : {
+        floating : {
+          '0% , 100%' : {
+            transform: 'translatey(0px)'
+          },
+          '50%' : {
+            transform: 'translatey(-20px)'
+          },
+        }
+      },
+      animation : {
+        floating : 'floating 4s ease-in-out infinite'
       }
     },
   },
