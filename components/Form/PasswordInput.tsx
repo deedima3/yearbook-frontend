@@ -13,7 +13,7 @@ const PasswordInput = ({title, placeholder}:Props) => {
   };
 
   return (
-    <div className="flex flex-col w-1/3 gap-1">
+    <div className="flex flex-col gap-1">
       <label className="text-white text-lg">{title}</label>
         <div className="flex outline outline-2 w-full rounded items-center md:hover:outline-yellow-600 focus:outline-yellow-600">
           <input 

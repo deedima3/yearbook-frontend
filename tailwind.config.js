@@ -25,6 +25,9 @@ module.exports = {
       },
       boxShadow : {
         'button-shadow' : "5px 5px 0px 0px #000000",
+        'success-shadow' : "8px 8px 0px 0px #10B981",
+        'failed-shadow' : "8px 8px 0px 0px #DE3434",
+        'warning-shadow' : "8px 8px 0px 0px #eab308",
       },
       strokeWidth : {
         'md' : "3px",
