@@ -4,12 +4,16 @@ interface Props {
   title: string;
   placeholder: string;
   type?: string;
+  register : any;
+  name : string
 }
 
 const TextInput = ({
   title, 
   placeholder,
   type = "",
+  register,
+  name
 }: Props) => {
   return (
     <div className="flex flex-col gap-1">
@@ -19,6 +23,7 @@ const TextInput = ({
             type={type}
             className="w-full pl-5 rounded h-11 outline-none"
             placeholder={placeholder}
+            {...register(name)}
         />
       </div>
   </div>

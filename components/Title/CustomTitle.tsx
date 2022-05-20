@@ -5,11 +5,11 @@ interface Props {
   title: string;
   desc?: string;
   extraClasses?: string;
-  size?: string;
+  extraClassesSub?: string;
   outlineWidth? : number;
 }
 
-const CustomTitle = ({ title, desc, extraClasses = "", size, outlineWidth=2 }: Props) => {
+const CustomTitle = ({ title, desc, extraClasses = "", extraClassesSub, outlineWidth=2 }: Props) => {
   return (
       <div className="flex flex-col gap-6">
         <div className="relative">
@@ -30,7 +30,7 @@ const CustomTitle = ({ title, desc, extraClasses = "", size, outlineWidth=2 }: P
           </div>
         </div>
         {
-          desc ? <p className={`text-white mx-auto ${size}`}>{desc}</p> : null
+          desc ? <p className={`text-white mx-auto ${extraClassesSub}`}>{desc}</p> : null
         }
       </div>
   );

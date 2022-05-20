@@ -1,9 +1,5 @@
 import axios from 'axios'
 
-axios.create({
-    baseURL: 'https://api.imgbb.com/1/upload',
-})
-
 export const uploadToImageBB = async (img : Blob) => {
     const formData = new FormData();
     formData.append("image", img);

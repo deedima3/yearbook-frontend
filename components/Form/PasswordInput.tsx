@@ -3,9 +3,11 @@ import { useState } from "react";
 interface Props {
     title: string;
     placeholder: string;
+    register : any
+    name : string
 }
 
-const PasswordInput = ({title, placeholder}:Props) => {
+const PasswordInput = ({title, placeholder, register, name}:Props) => {
   const [pwdShown, setPwdShown] = useState(false);
 
   const togglePassword = () => {
@@ -20,6 +22,7 @@ const PasswordInput = ({title, placeholder}:Props) => {
               type={pwdShown ? "text" : "password"} 
               className="w-full pl-5 rounded h-11 outline-none"
               placeholder={placeholder}
+              {...register(name)}
           />
           <div className="flex items-center w-max">
              <button 

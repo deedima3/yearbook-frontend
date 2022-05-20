@@ -11,14 +11,18 @@ import PasswordInput from "../components/Form/PasswordInput";
 import CustomTitle from "../components/Title/CustomTitle";
 import CustomButton from "../components/Button/CustomButton";
 import CustomLinkButton from "../components/Button/CustomLinkButton";
+import Title from "../components/SEO/Title";
 
 const Login = () => {
   const schema = yup.object({
-    email: yup.string().email("Email must be a valid email address").required("Email is required"),
+    email: yup
+      .string()
+      .email("Email must be a valid email address")
+      .required("Email is required"),
     password: yup.string().required("Password is required"),
   });
 
-//   const [user, setUser, removeUser] = useLocalStorage("user", null);
+  //   const [user, setUser, removeUser] = useLocalStorage("user", null);
   const [toast, showToast] = useToast(5000);
 
   const {
@@ -29,62 +33,89 @@ const Login = () => {
     reset,
   } = useForm({ resolver: yupResolver(schema) });
 
-  const toastContentSuccess : ToastProps = {
+  const toastContentSuccess: ToastProps = {
     title: "Login Berhasil",
     message: "Selamat datang di Minerva",
-    variant : "success"
-  }
+    variant: "success",
+  };
 
-  const toastContentFailed : ToastProps = {
+  const toastContentFailed: ToastProps = {
     title: "Login Gagal",
     message: "Username atau password salah",
-    variant : "error"
-  }
+    variant: "error",
+  };
 
   const onSubmit = (data: any) => {
     console.log("Push Data");
     console.log(data);
-      showToast(2000, toastContentSuccess);
-      showToast(2000, toastContentFailed);
+    showToast(2000, toastContentSuccess);
+    showToast(2000, toastContentFailed);
   };
 
   return (
     <NormalPageLayout>
-       <div className="flex justify-center my-20">
-           <div className="flex flex-col justify-center">
-              <CustomTitle   
-                 title="Login To Site" 
-                 desc="Login to site to use the create page menu, and create your own page" 
-                 extraClasses='font-bold'
-                 size='w-11/12 text-xl'
-              />
-               <form onSubmit={handleSubmit(onSubmit)}>
-                   <div className="max-w-screen">
-                       <div className='flex flex-col gap-5 mt-10 mb-6'>
-                           <TextInput 
-                               title='Email' placeholder='Enter email address' 
-                               type='email' {...register("email")}/>
-                            {errors.email && (
-                                <p className="text-red-400 text-xs -mt-3">{errors.email.message}</p>
-                              )}
-                            <PasswordInput 
-                               title='Password' placeholder='Masukan password' 
-                               {...register("password")}/>
-                            {errors.password && (
-                                <p className="text-red-400 text-xs -mt-3">{errors.password.message}</p>
-                            )}
-                        </div>
-                    </div>
-                    <CustomButton type = "submit" extraClasses={"w-full my-4"}>
-                       LOGIN
-                    </CustomButton>
-                    <CustomLinkButton type="button" extraClasses="bg-gray-400 w-full" href={"/register"}>
-                        REGISTER
-                    </CustomLinkButton>
-                </form>
+      <Title pageTitle="Login" description={"Login to use our apps"} />
+      <div className="flex justify-center my-20 w-full max-w-screen-sm">
+        <div className="flex flex-col justify-center w-full">
+          <CustomTitle
+            title="Login To Site"
+            desc="Login to site to use the create page menu, and create your own page"
+            extraClasses="font-bold text-6xl text-center"
+            extraClassesSub="text-md"
+            outlineWidth={8}
+          />
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-full max-w-screen-lg"
+          >
+            <div className="w-full max-w-screen-lg">
+              <div className="w-full flex flex-col gap-5 mt-10 mb-6">
+                <TextInput
+                  title="Email"
+                  placeholder="Enter email address"
+                  type="email"
+                  register={register}
+                  name={"email"}
+                />
+                {errors.email && (
+                  <p className="text-red-400 text-xs -mt-3">
+                    {errors.email.message}
+                  </p>
+                )}
+                <PasswordInput
+                  title="Password"
+                  placeholder="Masukan password"
+                  register={register}
+                  name={"password"}
+                />
+                {errors.password && (
+                  <p className="text-red-400 text-xs -mt-3">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
             </div>
-       </div>
-      <Toast show={toast.show} title={toast.title} message={toast.message} variant={toast.variant}/>
+            <div className="flex items center gap-10 justify-center">
+              <CustomLinkButton
+                type="reset"
+                extraClasses="bg-gray-400 my-4"
+                href={"/login"}
+              >
+                RESET
+              </CustomLinkButton>
+              <CustomButton type="submit" extraClasses={"my-4"}>
+                LOGIN
+              </CustomButton>
+            </div>
+          </form>
+        </div>
+      </div>
+      <Toast
+        show={toast.show}
+        title={toast.title}
+        message={toast.message}
+        variant={toast.variant}
+      />
     </NormalPageLayout>
   );
 };

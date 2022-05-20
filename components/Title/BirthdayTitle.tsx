@@ -10,7 +10,7 @@ const BirthdayTitle = () => {
             title="Birthday Celebration" 
             desc="There’s no too late to say happy birthday, but only if it’s within a week" 
             extraClasses='font-black'
-            size='w-2/3 text-2xl'
+            extraClassesSub='w-2/3 text-2xl'
         />
         </div>
     );
