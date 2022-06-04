@@ -12,4 +12,5 @@ export function useModal(){
     }
 
     return [show, setShow, handleClose, handleOpen] as const
-}
+
+} 

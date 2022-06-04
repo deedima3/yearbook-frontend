@@ -28,6 +28,7 @@ const PasswordInput = ({title, placeholder, register, name}:Props) => {
              <button 
                  onClick={togglePassword}
                  className="bg-white px-5 rounded -ml-2 h-11"
+                 type="button"
              >
                 {pwdShown ? <img src="./eye-off.svg" alt="open"/> : <img src="./eye.svg" alt="hide"/>}
              </button>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useToast } from "../components/Hooks/useToast";
+import { useToast } from "../hooks/useToast";
 import Toast from "../components/Toast/Toast";
 import { ToastProps } from "../interfaces/toastInterfaces";
 import NormalPageLayout from "../components/Layout/NormalPageLayout";
@@ -12,6 +12,9 @@ import CustomTitle from "../components/Title/CustomTitle";
 import CustomButton from "../components/Button/CustomButton";
 import CustomLinkButton from "../components/Button/CustomLinkButton";
 import Title from "../components/SEO/Title";
+import authApi from "../api/auth/authApi";
+import useUserStore from "../stores/userStore";
+import { useRouter } from "next/router";
 
 const Login = () => {
   const schema = yup.object({
@@ -22,7 +25,18 @@ const Login = () => {
     password: yup.string().required("Password is required"),
   });
 
+  const router = useRouter();
+
   //   const [user, setUser, removeUser] = useLocalStorage("user", null);
+
+  const user = useUserStore((state) => state.user);
+  const changeUser = useUserStore((state) => state.changeUser);
+
+  if(user){
+    router.push("/");
+  }
+  
+
   const [toast, showToast] = useToast(5000);
 
   const {
@@ -35,7 +49,7 @@ const Login = () => {
 
   const toastContentSuccess: ToastProps = {
     title: "Login Berhasil",
-    message: "Selamat datang di Minerva",
+    message: "Selamat datang di Yearbook",
     variant: "success",
   };
 
@@ -45,11 +59,18 @@ const Login = () => {
     variant: "error",
   };
 
-  const onSubmit = (data: any) => {
-    console.log("Push Data");
-    console.log(data);
-    showToast(2000, toastContentSuccess);
-    showToast(2000, toastContentFailed);
+  const onSubmit = async (data: any) => {
+    try {
+      let result = await authApi.login(data)
+      showToast(2000, toastContentSuccess);
+      changeUser(result.accesstoken)
+      router.push("/");
+      console.log(result)
+    }
+    catch(e){
+      console.log(e)
+      showToast(2000, toastContentFailed);
+    }    
   };
 
   return (

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useToast } from "../components/Hooks/useToast";
+import { useToast } from "../hooks/useToast";
 import Toast from "../components/Toast/Toast";
 import { ToastProps } from "../interfaces/toastInterfaces";
 import NormalPageLayout from "../components/Layout/NormalPageLayout";
@@ -12,6 +12,7 @@ import CustomTitle from "../components/Title/CustomTitle";
 import CustomButton from "../components/Button/CustomButton";
 import CustomLinkButton from "../components/Button/CustomLinkButton";
 import Title from "../components/SEO/Title";
+import authApi from "../api/auth/authApi";
 
 const Register = () => {
   const schema = yup.object({
@@ -20,6 +21,8 @@ const Register = () => {
       .email("Email must be a valid email address")
       .required("Email is required"),
     password: yup.string().required("Password is required"),
+    nickname : yup.string().required("Nickname is required"),
+    nim : yup.string().required("NIM is required").matches(/(20085610)([0-9])/, 'NIM should be following nim format'),
   });
 
   //   const [user, setUser, removeUser] = useLocalStorage("user", null);
@@ -34,29 +37,35 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const toastContentSuccess: ToastProps = {
-    title: "Login Berhasil",
-    message: "Selamat datang di Minerva",
+    title: "Register Berhasil",
+    message: "Selamat datang di Yearbook",
     variant: "success",
   };
 
   const toastContentFailed: ToastProps = {
-    title: "Login Gagal",
-    message: "Username atau password salah",
+    title: "Register Gagal",
+    message: "Data yang diinput salah",
     variant: "error",
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     console.log("Push Data");
     console.log(data);
-    showToast(2000, toastContentSuccess);
-    showToast(2000, toastContentFailed);
+    try {
+      let response = await authApi.register(data)
+      showToast(2000, toastContentSuccess);
+    }
+    catch(e){
+      console.log(e)
+      showToast(2000, toastContentFailed);
+    }
   };
 
   return (
     <NormalPageLayout>
       <Title pageTitle="Register" description={"Dont Have and Account?, Lets Register to the Site to use our sevices"} />
-      <div className="flex justify-center my-20">
-        <div className="flex flex-col justify-center">
+      <div className="flex justify-center my-20 w-full max-w-screen-sm">
+        <div className="flex flex-col justify-center w-full">
           <CustomTitle
             title="Register To Site"
             desc="Dont Have and Account?, Lets Register to the Site to use our sevices"
@@ -65,8 +74,8 @@ const Register = () => {
             outlineWidth={8}
           />
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="max-w-screen">
-              <div className="flex flex-col gap-5 mt-10 mb-6">
+            <div className="w-full max-w-screen-lg">
+              <div className="w-full flex flex-col gap-5 mt-10 mb-6">
                 <TextInput
                   title="Email"
                   placeholder="Enter email address"
@@ -88,6 +97,30 @@ const Register = () => {
                 {errors.password && (
                   <p className="text-red-400 text-xs -mt-3">
                     {errors.password.message}
+                  </p>
+                )}
+                <TextInput
+                  title="NIM"
+                  placeholder="Enter NIM"
+                  type="nim"
+                  register={register}
+                  name={"nim"}
+                />
+                {errors.nim && (
+                  <p className="text-red-400 text-xs -mt-3">
+                    {errors.nim.message}
+                  </p>
+                )}
+                <TextInput
+                  title="Nickname"
+                  placeholder="Enter nickname"
+                  type="nickname"
+                  register={register}
+                  name={"nickname"}
+                />
+                {errors.nickname && (
+                  <p className="text-red-400 text-xs -mt-3">
+                    {errors.nickname.message}
                   </p>
                 )}
               </div>

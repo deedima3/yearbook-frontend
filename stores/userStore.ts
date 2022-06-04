@@ -5,8 +5,7 @@ import { persist } from "zustand/middleware";
 
 interface UserState {
   user: string | null | undefined;
-  is_admin: number | null | undefined;
-  changeUser: (user: string, is_admin : number) => void;
+  changeUser: (user: string) => void;
   removeUser: () => void;
 }
 
@@ -19,12 +18,11 @@ const useUserStore = create<UserState>(
   (persist as unknown as MyPersist)(
     (set: any) => ({
       user: "",
-      is_admin : 0,
-      changeUser: (user: string, is_admin : number) => set({ user: user, is_admin: is_admin }),
-      removeUser: () => set({ user: "", is_admin: 0 }),
+      changeUser: (user: string) => set({ user: user }),
+      removeUser: () => set({ user: ""}),
     }),
     {
-      name: "user-storage",
+      name: "yearbook-user-storage",
       getStorage: () => localStorage,
     }
   )
