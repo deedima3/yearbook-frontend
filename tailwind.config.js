@@ -11,6 +11,8 @@ module.exports = {
         "brand-blue": "#0767C4",
         "brand-green": "#10B981",
         "brand-red": "#DE3434",
+        "loader-red" : "#04AEDF",
+        "loader-yellow" : "#0440DF",
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],
@@ -41,10 +43,19 @@ module.exports = {
           '50%' : {
             transform: 'translatey(-20px)'
           },
+        },
+        background : {
+          '0% , 100%' : {
+            backgroundPosition : '0% 50%'
+          },
+          "50%" : {
+            backgroundPosition: "100% 50%"
+          }
         }
       },
       animation : {
-        floating : 'floating 4s ease-in-out infinite'
+        floating : 'floating 4s ease-in-out infinite',
+        background : 'background 4s ease-in-out infinite'
       }
     },
   },
