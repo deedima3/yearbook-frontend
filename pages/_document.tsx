@@ -10,6 +10,7 @@ const Document = () => {
         <div id="mobile-nav" />
         <div id="modal" />
         <div id="toast" />
+        <div id="loader" />
         <NextScript />
       </body>
     </Html>

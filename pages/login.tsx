@@ -15,6 +15,8 @@ import Title from "../components/SEO/Title";
 import authApi from "../api/auth/authApi";
 import useUserStore from "../stores/userStore";
 import { useRouter } from "next/router";
+import { useProgressLoader } from "../hooks/useProgressLoader";
+import Loader from "../components/Loader/Loader";
 
 const Login = () => {
   const schema = yup.object({
@@ -59,9 +61,13 @@ const Login = () => {
     variant: "error",
   };
 
+  const [progress, isLoading, setLoading, setProgress] = useProgressLoader()
+
   const onSubmit = async (data: any) => {
     try {
-      let result = await authApi.login(data)
+      setLoading(true);
+      let result = await authApi.login(data, setProgress)
+      setLoading(false)
       showToast(2000, toastContentSuccess);
       changeUser(result.accesstoken)
       router.push("/");
@@ -137,6 +143,7 @@ const Login = () => {
         message={toast.message}
         variant={toast.variant}
       />
+      <Loader isLoading={isLoading} progress={progress}/>
     </NormalPageLayout>
   );
 };

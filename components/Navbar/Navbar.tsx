@@ -42,7 +42,7 @@ const Navbar = () => {
           <NavbarLink text="BIRTHDAY" href="/birthday" />
           {user ? (
             <>
-              <NavbarLink text="Edit Profile" href="/profile" />
+              <NavbarLink text="PROFILE" href="/profile" />
             </>
           ) : (
             ""
