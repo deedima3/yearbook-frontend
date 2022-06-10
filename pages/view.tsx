@@ -11,6 +11,7 @@ import PasswordInput from '../components/Form/PasswordInput'
 import BirthdayTitle from '../components/Title/BirthdayTitle'
 import Loader from '../components/Loader/Loader'
 import { useState } from 'react'
+import BirthdayCard from '../components/Card/BirthdayCard'
 
 const View = () => {
     const [modal, setModal, handleModalClose, handleModalOpen] = useModal();

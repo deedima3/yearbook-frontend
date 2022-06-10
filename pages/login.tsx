@@ -82,7 +82,7 @@ const Login = () => {
   return (
     <NormalPageLayout>
       <Title pageTitle="Login" description={"Login to use our apps"} />
-      <div className="flex justify-center my-20 w-full max-w-screen-sm">
+      <div className="flex justify-center my-8 w-full max-w-screen-sm">
         <div className="flex flex-col justify-center w-full">
           <CustomTitle
             title="Login To Site"
@@ -125,7 +125,7 @@ const Login = () => {
             <div className="flex items center gap-10 justify-center">
               <CustomLinkButton
                 type="reset"
-                extraClasses="bg-gray-400 my-4"
+                extraClasses="my-4 bg-slate-400 hover:bg-brand-brown"
                 href={"/login"}
               >
                 RESET
