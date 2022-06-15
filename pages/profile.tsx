@@ -17,7 +17,6 @@ import Title from "../components/SEO/Title";
 const Profile = () => {
   const { user, userData, changeUser, removeUser } = useUser();
   
-
   const {
     article: {
       article,
@@ -40,12 +39,13 @@ const Profile = () => {
 
   const dataPusher = async () => {
     let dataPush = {
-      userID: userData!.id,
+      userID: parseInt(userData!.id),
       description: handleSave(),
       header_Img_Path: imageLink,
     };
-    let request = await pagesApi.addNewPage(dataPush);
+    
     console.log(dataPush);
+    let request = await pagesApi.addNewPage(dataPush);
   };
 
   const [show, setShow, handleClose, handleOpen] = useModal();
@@ -63,7 +63,8 @@ const Profile = () => {
         article={article}
         setArticle={setArticle}
         dataPusher={dataPusher}
-        handleOpenModal={handleOpen} handlePushData={dataPusher}/>
+        handleOpenModal={handleOpen} 
+        handlePushData={dataPusher}/>
       }
       <Modal show={show} onClose={handleClose}>
         <PictureCropModal

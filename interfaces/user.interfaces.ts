@@ -1,5 +1,5 @@
 export interface User {
     exp : number;
-    id : number;
+    id : string;
     nickname : string;
 }

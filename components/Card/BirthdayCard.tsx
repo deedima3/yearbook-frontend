@@ -23,7 +23,7 @@ const ModalsCard = ({name, imageLink, handleCancel}: Props) => {
         Today is {name} Birthday
       </h2>
       <h2 className="text-xl mt-3">
-        Don't miss a chance to wish her happy birthday
+        Dont miss a chance to wish her happy birthday
       </h2>
       </div>
       <div className="flex justify-center mb-12">

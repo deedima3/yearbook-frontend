@@ -18,8 +18,7 @@ const Team = () => {
               key={index}
               imageLink={teamMember.imageLink}
               name={teamMember.name}
-              description={teamMember.description}
-            />
+              description={teamMember.description} userID={""}            />
           );
         })}
       </div>

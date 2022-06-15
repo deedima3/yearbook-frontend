@@ -37,9 +37,8 @@ const Login = () => {
   if(user){
     router.push("/");
   }
-  
   const [toast, showToast] = useToast(5000);
-
+  
   const {
     register,
     handleSubmit,

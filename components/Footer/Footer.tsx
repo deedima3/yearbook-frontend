@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import Team from "../../pages/team";
 
@@ -12,16 +13,16 @@ const Footer = () => {
           </div>
           <hr></hr>
           <div className="flex justify-between py-8 px-48">
-            <a href="/">
+            <Link href="/">
               <p className="text-xl text-white font-bold">
                 Privacy Policy
               </p>
-            </a>
-            <a href="/team">
+            </Link>
+            <Link href="/team">
               <p className="text-xl text-white font-bold">
                 Our Team
               </p>
-            </a>
+            </Link>
           </div>
       </div>
     )

@@ -12,6 +12,10 @@ export default {
 
     async addNewPage(page : any) {
         return (await client.post('/pages', page)).data.data;
+    },
+
+    async searchPage(nickname : string, nim : string) {
+        return (await client.get(`/pages/search?nickname=${nickname}&nim=${nim}`)).data.data;
     }
     
 }

@@ -128,6 +128,18 @@ const Register = () => {
                     {errors.nickname.message}
                   </p>
                 )}
+                <TextInput
+                  title="Birthday"
+                  placeholder="Enter Date of Birth"
+                  type="date"
+                  register={register}
+                  name={"birthDate"}
+                />
+                {errors.nickname && (
+                  <p className="text-red-400 text-xs -mt-3">
+                    {errors.nickname.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="flex items center gap-10 justify-center">

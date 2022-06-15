@@ -69,7 +69,7 @@ const HeaderCardEdit = ({
           </div>
         </div>
       </div>
-      <CustomButton extraClasses="mt-10" onClick={() => {}}>
+      <CustomButton extraClasses="mt-10" onClick={handlePushData}>
         SAVE PROFILE
       </CustomButton>
     </>
