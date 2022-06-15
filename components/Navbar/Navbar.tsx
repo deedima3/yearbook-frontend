@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { useUser } from "../../hooks/data/useUser";
 import useUserStore from "../../stores/userStore";
 import CustomButton from "../Button/CustomButton";
 import CustomLinkButton from "../Button/CustomLinkButton";
 import NavbarLink from "./NavbarLink";
 
 const Navbar = () => {
-  const user = useUserStore((state) => state.user);
-  const removeUser = useUserStore((state) => state.removeUser);
+  const {user, userData, changeUser, removeUser} = useUser()
   const [navbarColor, setNavbarColor] = useState(false);
 
   const changeNavbarColor = () => {

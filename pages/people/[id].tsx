@@ -5,9 +5,31 @@ import NormalPageLayout from "../../components/Layout/NormalPageLayout";
 import Title from "../../components/SEO/Title";
 import { twitsData } from "../../data/twitsDummy";
 import CustomLinkButton from "../../components/Button/CustomLinkButton";
+import pagesApi from "../../api/pages/pagesApi";
+import { UserPage } from "../../interfaces/pages.interfaces";
+import birthdayApii from "../../api/birthday/birthdayApi";
+import birthdayApi from "../../api/birthday/birthdayApi";
+import postApi from "../../api/post/postApi";
+import { EditorState, convertFromRaw, ContentState } from "draft-js";
 
-const PersonDetail = () => {
+const PersonDetail = ({}) => {
+  let articleState : EditorState
 
+  const checkValidJSON = () => {
+      try{
+          JSON.parse(article)
+          return true
+      }
+      catch(e){
+          return false
+      }
+  }
+
+  if(checkValidJSON()){
+      articleState = EditorState.createWithContent(convertFromRaw((JSON.parse(article))))
+  }else{
+      articleState = EditorState.createWithContent(ContentState.createFromText(article))
+  }
   return (
     <NormalPageLayout>
       <div className="flex justify-center mt-8">
@@ -44,5 +66,29 @@ const PersonDetail = () => {
     </NormalPageLayout>
   );
 };
+
+export async function getStaticProps() {
+  const pageData = await pagesApi.getPagesByID(id);
+  const posts = await postApi.getAllPost();
+  const birthday = await birthdayApi.checkIfBirthday(id);
+  return {
+    props: {
+      posts,
+    },
+    revalidate : 30
+  }
+}
+
+export async function getStaticPaths() {
+  const pages : UserPage[] = await pagesApi.getAllPages();
+    return {
+      paths: pages.map(page => ({
+        params: {
+          id: page.id,
+        },
+      })),
+      fallback: "blocking"
+    }
+  }
 
 export default PersonDetail;

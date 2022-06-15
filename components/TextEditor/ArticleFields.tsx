@@ -78,8 +78,8 @@ const ArticleFields = ({
   return (
     <article
       className={`${
-        readOnly ? "" : " border-2 border-black bg-white shadow-md text-black"
-      } p-10 max-w-screen-lg w-full`}
+        readOnly ? "" : "border-2 border-black bg-white shadow-md text-black w-full"
+      } p-5 max-w-screen-lg w-full`}
     >
       <Editor
         editorState={article}

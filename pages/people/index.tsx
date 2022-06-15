@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import ProfileCard from "../../components/Card/ProfileCard";
 import PasswordInput from "../../components/Form/PasswordInput";
 import SearchBar from "../../components/Form/SearchBar";
@@ -8,7 +8,7 @@ import { profileData } from "../../data/dummyProfile";
 
 const People = () => {
 
-    const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
 
   return (
     <NormalPageLayout>
@@ -18,7 +18,9 @@ const People = () => {
           {
               profileData.map(({photo, name, description, userID}) => {
                   return (
-                    <ProfileCard imageLink={photo} name={name} description={description} key={userID}/>
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <ProfileCard imageLink={photo} name={name} description={description} key={userID}/>
+                    </Suspense>
                   )
               })
           }
@@ -26,5 +28,7 @@ const People = () => {
     </NormalPageLayout>
   );
 };
+
+
 
 export default People;

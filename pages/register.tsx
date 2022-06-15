@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useToast } from "../hooks/useToast";
+import { useToast } from "../hooks/show/useToast";
 import Toast from "../components/Toast/Toast";
 import { ToastProps } from "../interfaces/toastInterfaces";
 import NormalPageLayout from "../components/Layout/NormalPageLayout";
@@ -13,6 +13,8 @@ import CustomButton from "../components/Button/CustomButton";
 import CustomLinkButton from "../components/Button/CustomLinkButton";
 import Title from "../components/SEO/Title";
 import authApi from "../api/auth/authApi";
+import Loader from "../components/Loader/Loader";
+import { useProgressLoader } from "../hooks/show/useProgressLoader";
 
 const Register = () => {
   const schema = yup.object({
@@ -27,6 +29,7 @@ const Register = () => {
 
   //   const [user, setUser, removeUser] = useLocalStorage("user", null);
   const [toast, showToast] = useToast(5000);
+  const [progress, isLoading, setLoading, setProgress] = useProgressLoader()
 
   const {
     register,
@@ -52,7 +55,9 @@ const Register = () => {
     console.log("Push Data");
     console.log(data);
     try {
-      let response = await authApi.register(data)
+      setLoading(true);
+      let response = await authApi.register(data, setProgress)
+      setLoading(false);
       showToast(2000, toastContentSuccess);
     }
     catch(e){
@@ -146,6 +151,7 @@ const Register = () => {
         message={toast.message}
         variant={toast.variant}
       />
+      <Loader isLoading={isLoading} progress={progress}/>
     </NormalPageLayout>
   );
 };

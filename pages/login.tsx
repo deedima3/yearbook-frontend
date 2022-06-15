@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useToast } from "../hooks/useToast";
+import { useToast } from "../hooks/show/useToast";
 import Toast from "../components/Toast/Toast";
 import { ToastProps } from "../interfaces/toastInterfaces";
 import NormalPageLayout from "../components/Layout/NormalPageLayout";
@@ -15,7 +15,7 @@ import Title from "../components/SEO/Title";
 import authApi from "../api/auth/authApi";
 import useUserStore from "../stores/userStore";
 import { useRouter } from "next/router";
-import { useProgressLoader } from "../hooks/useProgressLoader";
+import { useProgressLoader } from "../hooks/show/useProgressLoader";
 import Loader from "../components/Loader/Loader";
 
 const Login = () => {
@@ -38,7 +38,6 @@ const Login = () => {
     router.push("/");
   }
   
-
   const [toast, showToast] = useToast(5000);
 
   const {

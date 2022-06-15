@@ -1,52 +1,32 @@
-import { EditorState, RichUtils } from "draft-js";
-import React, { useState } from "react";
 import CustomButton from "../../components/Button/CustomButton";
 import NormalPageLayout from "../../components/Layout/NormalPageLayout";
 import Title from "../../components/SEO/Title";
 import ArticleFields from "../../components/TextEditor/ArticleFields";
 import ArticleToolbar from "../../components/TextEditor/ArticleToolbar";
+import { useArticle } from "../../hooks/abstraction/useArticle";
 
 const CreateTwits = () => {
-  const [article, setArticle] = useState<EditorState>(
-    EditorState.createEmpty()
-  );
-  const [title, setTitle] = useState("");
-
-  const handleRichText =
-    (inlineStyle: string) =>
-    (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-      e.preventDefault();
-      setArticle(RichUtils.toggleInlineStyle(article, inlineStyle));
-    };
-
-  const handleBlockType =
-    (bType: string) =>
-    (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-      e.preventDefault();
-      setArticle(RichUtils.toggleBlockType(article, bType));
-    };
-
-  const handleSave = () => {
-    console.log(article.getCurrentContent().getPlainText());
-  };
+  const {
+    article,
+    setArticle,
+    handler: { handleBlockType, handleRichText, handleSave },
+    title,
+    setTitle,
+  } = useArticle();
 
   return (
     <NormalPageLayout>
-        <Title pageTitle="New Twits" description="Create new twits"/>
+      <Title pageTitle="New Twits" description="Create new twits" />
       <div className="w-full flex justify-center gap-20">
         <ArticleToolbar
           richTextHandler={handleRichText}
           blockTypeHandler={handleBlockType}
           saveHandler={handleSave}
         />
-        <ArticleFields
-          article={article}
-          setArticle={setArticle}
-          plugin={[]}
-        />
+        <ArticleFields article={article} setArticle={setArticle} plugin={[]} />
       </div>
       <CustomButton extraClasses="mt-10" onClick={handleSave}>
-          SAVE TWITS
+        SAVE TWITS
       </CustomButton>
     </NormalPageLayout>
   );

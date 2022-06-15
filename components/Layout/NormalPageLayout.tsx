@@ -10,7 +10,7 @@ const NormalPageLayout = ({ children }: Props) => {
   return (
     <div className="bg-grid-pattern-2 bg-grid-pattern-size bg-blue-bg font-Inter min-h-screen">
       <Navbar />
-      <div className="flex flex-col w-full items-center pt-24">
+      <div className="flex flex-col w-full items-center pt-24 min-h-screen justify-center">
         {children}
       </div>
       <Footer/>

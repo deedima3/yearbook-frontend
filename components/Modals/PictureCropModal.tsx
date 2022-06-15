@@ -15,7 +15,7 @@ interface Props {
   setCompletedCrop: (crop: any) => void;
   imgRef: any;
   uploadImage: () => Promise<any>;
-  setCroppedImageLink: (link: string) => void;
+  setCroppedImageLink: () => void;
 }
 
 const PictureCropModal = ({
@@ -80,7 +80,7 @@ const PictureCropModal = ({
       </div>
       <CustomButton
         onClick={async () => {
-          setCroppedImageLink(await uploadImage());
+          setCroppedImageLink();
         }}
         extraClasses="mt-10"
       >

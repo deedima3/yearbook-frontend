@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { ToastProps } from '../interfaces/toastInterfaces'
+import { ToastProps } from '../../interfaces/toastInterfaces'
 
 export function useToast(duration : number){
 

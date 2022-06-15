@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { centerCrop, Crop, makeAspectCrop, PixelCrop } from "react-image-crop";
-import { uploadToImageBB } from "../api/imgBB/imgbb";
-import { canvasPreview } from "../shared/canvasPreview";
+import { uploadToImageBB } from "../../api/imgBB/imgbb";
+import { canvasPreview } from "../../shared/canvasPreview";
 
 
 export function useImageCropper(aspectRatio : number) {
