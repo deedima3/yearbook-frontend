@@ -5,6 +5,6 @@ export default {
         return (await client.get(`/birthday`)).data.data;
     },
     async checkIfBirthday(id: string){
-        return (await client.get(`/birthday/${id}`)).data
+        return (await client.get(`/birthday/${id}`)).data.data;
     }
 }
