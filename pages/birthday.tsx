@@ -24,7 +24,7 @@ const Birthday = ({posts} : Props) => {
               imageLink={header_img}
               name={nickname}
               description={description}
-              key={id} userID={owner.toString()}/>
+              key={id} userID={id.toString()}/>
           );
         }) : <div className="flex justify-center w-full"> No Birthday!! </div> }
       </div>

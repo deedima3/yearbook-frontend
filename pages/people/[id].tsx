@@ -88,11 +88,13 @@ export async function getStaticProps({ params }: any) {
   const posts = await postApi.getPostByID(
     pageData.filter((page) => page.id == params.id)[0].id
   );
+  const birthday = await birthdayApi.checkIfBirthday(pageData.filter((page) => page.id == params.id)[0].id.toString())
 
   return {
     props: {
       filteredPageData,
       posts,
+      birthday
     },
     revalidate: 1,
   };
