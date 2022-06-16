@@ -105,12 +105,12 @@ const PersonDetail = ({ posts, filteredPageData, birthday }: Props) => {
 
 export async function getStaticProps({ params }: any) {
   const pageData: UserPage[] = await pagesApi.getAllPages();
-  const filteredPageData = pageData.filter((page) => page.id == params.id)[0];
+  const filteredPageData = pageData.filter((page) => page.userID == params.id)[0];
   const posts = await postApi.getPostByID(
-    pageData.filter((page) => page.id == params.id)[0].id
+    pageData.filter((page) => page.userID == params.id)[0].userID
   );
   const birthday = await birthdayApi.checkIfBirthday(
-    pageData.filter((page) => page.id == params.id)[0].id.toString()
+    pageData.filter((page) => page.userID == params.id)[0].userID.toString()
   );
 
   return {
@@ -128,7 +128,7 @@ export async function getStaticPaths() {
   return {
     paths: pages.map((page) => ({
       params: {
-        id: page.id.toString(),
+        id: page.userID.toString(),
       },
     })),
     fallback: "blocking",

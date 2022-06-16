@@ -18,13 +18,13 @@ const Birthday = ({posts} : Props) => {
       <CustomTitle title={"Birthday Celebration"} extraClasses="text-6xl font-black font-Inter flex flex-col items-center"  desc="There’s no too late to say happy birthday, but only if it’s within a week" outlineWidth={15} />
       <Title pageTitle="Birthday" description={"Say Happy Birthday to your friend"} />
       <div className="grid gap-10 grid-cols-3 max-w-screen-lg mt-16">
-        {posts ? posts.map(({ id, owner, nickname, header_img, description }) => {
+        {posts ? posts.map(({ userID, owner, nickname, header_img, description }, index) => {
           return (
             <ProfileCard
               imageLink={header_img}
               name={nickname}
               description={description}
-              key={id} userID={id.toString()}/>
+              key={index} userID={userID.toString()}/>
           );
         }) : <div className="flex justify-center w-full"> No Birthday!! </div> }
       </div>

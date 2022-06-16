@@ -5,11 +5,13 @@ export interface Page {
 }
 
 export interface UserPage {
-    id : number;
+    userID : number;
     owner : number;
     nickname : string;
     header_img : string;
     description : string;
+    nim : string;
+    image : string
 }
 
 export interface Post {
