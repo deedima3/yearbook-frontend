@@ -11,13 +11,17 @@ import birthdayApi from "../../api/birthday/birthdayApi";
 import postApi from "../../api/post/postApi";
 import { EditorState, convertFromRaw, ContentState } from "draft-js";
 import { Twits } from "../../interfaces/twitsInterfaces";
+import Modal from "../../components/Modals/Modal";
+import BirthdayCard from "../../components/Card/BirthdayCard";
+import { useModal } from "../../hooks/show/useModal";
 
 interface Props {
   posts: any;
   filteredPageData: any;
+  birthday : boolean;
 }
 
-const PersonDetail = ({ posts, filteredPageData }: Props) => {
+const PersonDetail = ({ posts, filteredPageData, birthday }: Props) => {
   let articleState: EditorState;
 
   const checkValidJSON = () => {
@@ -38,10 +42,18 @@ const PersonDetail = ({ posts, filteredPageData }: Props) => {
       ContentState.createFromText(filteredPageData.description)
     );
   }
+  const [show, setShow, handleClose, handleOpen] = useModal();
+
+  if(birthday){
+    handleOpen();
+  }
 
   return (
     <NormalPageLayout>
-      <Title pageTitle={filteredPageData && filteredPageData.name } description={filteredPageData && filteredPageData.description} />
+      <Title
+        pageTitle={filteredPageData && filteredPageData.name}
+        description={filteredPageData && filteredPageData.description}
+      />
       <div className="flex justify-center mt-8 w-full">
         <div className="flex flex-col justify-center max-w-screen-lg w-full">
           <HeaderCard
@@ -61,7 +73,10 @@ const PersonDetail = ({ posts, filteredPageData }: Props) => {
           <div className="grid gap-5 grid-row-3">
             {posts &&
               posts.map(
-                ({ title, content, pages, postID, upvote, downvote }: Twits , index : number ) => {
+                (
+                  { title, content, pages, postID, upvote, downvote }: Twits,
+                  index: number
+                ) => {
                   return (
                     <TwitsCard
                       title={title}
@@ -78,6 +93,12 @@ const PersonDetail = ({ posts, filteredPageData }: Props) => {
           </div>
         </div>
       </div>
+      <Modal show={show} onClose={handleClose}>
+        <BirthdayCard
+          imageLink={filteredPageData.header_img}
+          name={filteredPageData && filteredPageData.name}
+        />
+      </Modal>
     </NormalPageLayout>
   );
 };
@@ -88,13 +109,15 @@ export async function getStaticProps({ params }: any) {
   const posts = await postApi.getPostByID(
     pageData.filter((page) => page.id == params.id)[0].id
   );
-  const birthday = await birthdayApi.checkIfBirthday(pageData.filter((page) => page.id == params.id)[0].id.toString())
+  const birthday = await birthdayApi.checkIfBirthday(
+    pageData.filter((page) => page.id == params.id)[0].id.toString()
+  );
 
   return {
     props: {
       filteredPageData,
       posts,
-      birthday
+      birthday,
     },
     revalidate: 1,
   };
